@@ -1,0 +1,13 @@
+name: torbox-tinfoil-server
+services:
+    torbox-tinfoil-server:
+        stdin_open: true
+        tty: true
+        ports:
+            - 8000:8000
+        environment:
+            - TORBOX_API_KEY=<EDIT_THIS_KEY>
+            - AUTH_USERNAME=admin
+            - AUTH_PASSWORD=adminadmin
+            - PORT=8000
+        image: anonymoussystems/torbox-tinfoil-server:latest

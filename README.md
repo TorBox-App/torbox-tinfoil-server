@@ -82,15 +82,17 @@ services:
             - PORT=8000
         image: anonymoussystems/torbox-tinfoil-server:latest
 ```
-3. Connect using the connection details found above from Tinfoil.
 *You may also use the Github repository container found here: ghcr.io/torbox-app/torbox-tinfoil-server:latest*
+
+3. Connect using the connection details found above from Tinfoil.
+
 
 
 
 ## Running Locally (no Docker)
 1. Make sure you have Python installed. Anything from v3.6 should be okay.
 2. Download or git clone this repository.
-```
+```bash
 git clone https://github.com/TorBox-App/torbox-tinfoil-server.git
 ```
 or download repository zip [here](https://github.com/TorBox-App/torbox-tinfoil-server/archive/refs/heads/main.zip) and extract the files.
@@ -98,12 +100,12 @@ or download repository zip [here](https://github.com/TorBox-App/torbox-tinfoil-s
 3. Create a `.env` file or rename `.env.example` to `.env`.
 4. Edit or add in your environment variables to the `.env` file.
 5. Install the requirements.
-```
+```bash
 pip3 install -r requirements.txt
 ```
 7. If planning to run over the internet, make sure port 8000 is open. You may also edit this port using the `PORT` environment variable.
 8. Run the `main.py` script.
-```
+```bash
 python3 main.py
 ```
 7. Connect using the connection details found above from Tinfoil.

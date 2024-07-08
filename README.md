@@ -10,6 +10,13 @@ The TorBox Tinfoil Server allows you to easily set up your own custom Tinfoil sh
 
 
 
+## Requirements
+1. A TorBox account. Can be a free or premium account but keep in mind free accounts have restrictions. Sign up [here](https://torbox.app).
+2. A server or computer that can run Python or has administrator access (only necessary for Docker installation).
+3. A Nintendo Switch that has Tinfoil installed.
+
+
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your `.env` file.
@@ -100,4 +107,11 @@ python3 main.py
 
 For support, email contact@torbox.app or join our Discord server [here](https://join-discord.torbox.app). *We will not give sources or help with piracy in any way. This is for technical support only.*
 
+
+
+## Contributing
+
+Contributions are always welcome!
+
+Please make sure to follow [Conventional Commits](https://conventionalcommits.org/) when creating commit messages. We will authorize most pull requests, so don't hesistate to help out!
 

@@ -49,7 +49,7 @@ async def getDownloads(type: str):
                         "name": file.get("s3_path", None).split("/")[-1], # gets only the filename of the file
                         "size": file.get("size", 0)
                     })
-                except Exception:
+                except Exception as e:
                     logging.error(f"There was an error trying to add {type} download file to file list. Error: {str(e)}")
                     continue
         return files

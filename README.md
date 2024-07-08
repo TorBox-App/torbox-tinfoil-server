@@ -83,6 +83,7 @@ services:
         image: anonymoussystems/torbox-tinfoil-server:latest
 ```
 3. Connect using the connection details found above from Tinfoil.
+*You may also use the Github repository container found here: ghcr.io/torbox-app/torbox-tinfoil-server:latest*
 
 
 

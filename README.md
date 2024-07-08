@@ -94,8 +94,12 @@ or download repository zip [here](https://github.com/TorBox-App/torbox-tinfoil-s
 
 3. Create a `.env` file or rename `.env.example` to `.env`.
 4. Edit or add in your environment variables to the `.env` file.
-5. If planning to run over the internet, make sure port 8000 is open. You may also edit this port using the `PORT` environment variable.
-6. Run the `main.py` script.
+5. Install the requirements.
+```
+pip3 install -r requirements.txt
+```
+7. If planning to run over the internet, make sure port 8000 is open. You may also edit this port using the `PORT` environment variable.
+8. Run the `main.py` script.
 ```
 python3 main.py
 ```

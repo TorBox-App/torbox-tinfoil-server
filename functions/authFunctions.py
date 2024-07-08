@@ -17,7 +17,6 @@ def checkCorrectCredentials(credentials: HTTPBasicCredentials = Depends(security
     - boolean: the boolean determines if the credentials match.
     """
 
-
     current_username_bytes = credentials.username.encode("utf8")
     correct_username_bytes = AUTH_USERNAME.encode("utf-8")
     is_correct_username = secrets.compare_digest(
@@ -31,4 +30,3 @@ def checkCorrectCredentials(credentials: HTTPBasicCredentials = Depends(security
     if not (is_correct_username and is_correct_password):
         return False
     return True
-    

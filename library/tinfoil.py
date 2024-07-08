@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 SWITCH_UID = os.getenv("SWITCH_UID", None)
@@ -16,7 +17,5 @@ def errorMessage(message: str, error_code: str):
     Returns:
     - error: a dict with the 'error' key which is read by Tinfoil. Documentation here: https://blawar.github.io/tinfoil/custom_index/
     """
-    
-    return {
-        "error": f"TorBox\n\n{message}\n\nError: {error_code}"
-    }
+
+    return {"error": f"TorBox\n\n{message}\n\nError: {error_code}"}

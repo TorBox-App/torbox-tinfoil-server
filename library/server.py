@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 AUTH_USERNAME = os.getenv("AUTH_USERNAME", "admin")

@@ -1,5 +1,6 @@
 name: docker-build
-
+permissions:
+  packages: write
 on:
   push:
     branches:

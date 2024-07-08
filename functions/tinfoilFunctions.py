@@ -1,10 +1,12 @@
 import asyncio
-from functions.torboxFunctions import getDownloads
+from functions.torboxFunctions import getDownloads, getDownloadLink
 import logging
 from library.tinfoil import errorMessage
-from fastapi.responses import JSONResponse
+from fastapi import BackgroundTasks
+from fastapi.responses import JSONResponse, StreamingResponse
 import fnmatch
 import human_readable
+import httpx
 
 ACCEPTABLE_SWITCH_FILES = [".nsp", ".nsz", ".xci", ".xcz"]
 
@@ -23,7 +25,6 @@ async def generateIndex(base_url: str):
     success_message = "Welcome to your self-hosted TorBox Tinfoil Server! You are now able to directly download your files from TorBox to your switch.\n\n"
     files = []
 
-    
     try:
         # runs all requests in parallel for faster responses
         torrents, usenet_downloads, web_downloads = await asyncio.gather(getDownloads("torrents"), getDownloads("usenet"), getDownloads("webdl"))
@@ -63,6 +64,36 @@ async def generateIndex(base_url: str):
             content=errorMessage(f"There was an error generating the index. Error: {str(e)}", error_code="UNKOWN_ERROR")
         )
 
+async def serveFile(background_task: BackgroundTasks, download_type: str, download_id: int, file_id: int = 0):
+    """
+    Retrieves the TorBox download link and starts proxying the download through the server. This is necessary as generating a bunch of links through the index generation process can take some time, and is wasteful.
+
+    Requires:
+    - download_type: the download type of the file. Must be either 'torrents', 'usenet' or 'webdl'.
+    - download_id: an integer which represents the id of the download in the TorBox database.
+    - file_id: an integer which represents the id of the file which is inside of the download.
+    
+    Returns:
+    - Streaming Response: containing the download of the file to be served on the fly.
+    """
+
+    download_link = await getDownloadLink(download_type=download_type, download_id=download_id, file_id=file_id)
+
+    if not download_link:
+        return JSONResponse(
+            status_code=500,
+            content=errorMessage("There was an error retrieving the download link from TorBox. Please try again.", error_code="DATABASE_ERROR")
+        )
+
+    # now stream link and stream out
+    client = httpx.AsyncClient()
+    request = client.build_request(method="GET", url=download_link, timeout=90)
+    response = await client.send(request, stream=True)
+
+    cleanup = background_task.add_task(response.aclose)
+
+    return StreamingResponse(content=response.aiter_bytes(), background=cleanup)
+    
 
 
             

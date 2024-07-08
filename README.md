@@ -29,7 +29,7 @@ To run this project, you will need to add the following environment variables to
 
 `PORT` *The port that the server will run on. Usually no need to change this. If you do change this and are using Docker, change your port, such as `-p 9000:9000` Default is: 8000*
 
-`SWITCH_UID` *The specific switch UID which you want to lock the server to. The server will not accept any requests from any other switch, even if the username and password is correct. Usually not needed. This is left blank by default. You can get this from looking at the logs. Make sure not to set this on first creation, so you can get your UID.
+`SWITCH_UID` *The specific switch UID which you want to lock the server to. The server will not accept any requests from any other switch, even if the username and password is correct. Usually not needed. This is left blank by default. You can get this from looking at the logs. Make sure not to set this on first creation, so you can get your UID.*
 
 
 

@@ -19,7 +19,7 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             anonymoussystems/torbox-tinfoil-server
-            ghcr.io/anonymous-org-za/torbox-tinfoil-server          
+            ghcr.io/torbox-app/torbox-tinfoil-server          
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch

@@ -1,4 +1,4 @@
-from library.tinfoil import errorMessage
+from library.tinfoil import errorMessage, SWITCH_UID
 
 def checkAllowed(authenticated: bool, switch_uid: str):
     """
@@ -17,8 +17,8 @@ def checkAllowed(authenticated: bool, switch_uid: str):
         return False, errorMessage("Your given credentials are incorrect. Please try again.", error_code="BAD_TOKEN")
     if not switch_uid:
         return False, errorMessage("Please use your Nintendo Switch using Tinfoil to access this server.", error_code="INVALID_DEVICE")
-    
-    # TODO: allow passing in a switch_uid to compare with
+    if SWITCH_UID and switch_uid != SWITCH_UID:
+        return False, errorMessage("This switch is not authorized to use this server. Please use the correct switch to access.", error_code="INVALID_DEVICE")
 
     return True, None
     

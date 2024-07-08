@@ -1,3 +1,10 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+SWITCH_UID = os.getenv("SWITCH_UID", None)
+
+
 def errorMessage(message: str, error_code: str):
     """
     Simply returns a well-formatted error message that works with Tinfoil.

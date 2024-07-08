@@ -6,8 +6,10 @@ from library.tinfoil import errorMessage
 from library.server import PORT
 from functions.authFunctions import checkCorrectCredentials
 from functions.serverFunctions import checkAllowed
+import logging
 
 app = FastAPI()
+logging.basicConfig(level=logging.DEBUG)
 
 # Custom exemption handler to be well-formatted with Tinfoil so the user knows what has happened if no authentication is sent, as it is required.
 @app.exception_handler(HTTPException)
@@ -24,6 +26,7 @@ async def get_user_files(
     authenticated: bool = Depends(checkCorrectCredentials),
     uid: Annotated[Union[str, None], Header()] = None
 ):
+    logging.debug(f"Request from Switch with UID: {uid}")
     allowed, response = checkAllowed(authenticated=authenticated, switch_uid=uid)
     if not allowed:
         return JSONResponse(

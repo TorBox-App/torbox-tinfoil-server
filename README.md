@@ -11,7 +11,7 @@ The TorBox Tinfoil Server allows you to easily set up your own custom Tinfoil sh
 
 
 ## Requirements
-1. A TorBox account. Can be a free or premium account but keep in mind free accounts have restrictions. Sign up [here](https://torbox.app).
+1. A TorBox account. Must be on a paid plan. Sign up [here](https://torbox.app/subscription).
 2. A server or computer that can run Python or has administrator access (only necessary for Docker installation).
 3. A Nintendo Switch that has Tinfoil installed.
 
